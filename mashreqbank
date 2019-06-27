@@ -1,0 +1,240 @@
+package bank;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+//import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class mashreqbank {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Anu\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.mashreqbank.com/");
+		driver.manage().window().maximize();
+		
+		//Validating the navigate bar
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div")).isDisplayed();
+		System.out.println("Navigation bar validation success");
+		}
+		catch(Exception e) {
+		System.out.println("Navigation validation faild");
+		}
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[2]/a")).isDisplayed();
+		System.out.println("CORPORATE is visible");
+		}
+		catch(Exception e){
+		System.out.println("CORPORATE is not visible");
+		}
+
+		////BUSINESS
+
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[3]/a")).isDisplayed();
+		System.out.println("BUSINESS is visible");
+		}
+		catch(Exception e){
+		System.out.println("BUSINESS is not visible");
+		}
+
+		/////INTERNATIONNAL
+
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[2]/a")).isDisplayed();
+		System.out.println("INTERNATIONNAL is visible");
+		}
+		catch(Exception e){
+		System.out.println("INTERNATIONNAL is not visible");
+		}
+
+		////PRIVATE BANKING
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[4]/a")).isDisplayed();
+		System.out.println("PRIVATE BANKING is visible");
+		}
+		catch(Exception e){
+		System.out.println("PRIVATE BANKING is not visible");
+		}
+
+
+		///AL ISLAMI
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[6]/a")).isDisplayed();
+		System.out.println("AL ISLAMI is visible");
+		}
+		catch(Exception e){
+		System.out.println("AL ISLAMI is not visible");
+		}
+
+		////GOLD
+
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[7]/a")).isDisplayed();
+		System.out.println("GOLD is visible");
+		}
+		catch(Exception e){
+		System.out.println("GOLD is not visible");
+		}
+
+		////MASHREQ SECURITIES
+
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[8]/a")).isDisplayed();
+		System.out.println("MASHREQ SECURITIES is visible");
+		}
+		catch(Exception e){
+		System.out.println("MASHREQ SECURITIES is not visible");
+		}
+
+
+
+		////MASHREQ CAPITAL
+
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[9]/a")).isDisplayed();
+		System.out.println("MASHREQ CAPITAL is visible");
+		}
+		catch(Exception e){
+		System.out.println("MASHREQ CAPITAL is not visible");
+		}
+
+		////MASHREQ GLOBAL SERVICE
+
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[1]/nav/div/div[1]/div/ul/li[10]/a")).isDisplayed();
+		System.out.println("MASHREQ GLOBAL SERVICE is visible");
+		}
+		catch(Exception e){
+		System.out.println("MASHREQ GLOBAL SERVICE is not visible");
+		}
+
+		////MASHREQ NEWS
+		try {
+		driver.findElement(By.xpath("/html/body/div[2]/div[4]/div[3]/ui-view/div[1]/div[3]/div[2]/div[1]/div")).isDisplayed();
+		System.out.println("MASHREQ NEWS is displayed");
+		}
+		catch(Exception e){
+		System.out.println("MASHREQ NEWS is not displayed");
+		}
+
+		///CONTACT US
+		try {
+		driver.findElement(By.xpath("//*[@id=\"ac-globaldiv\"]/div/section/div/section[4]/div/a/p")).isDisplayed();
+		System.out.println("CONTACT US link is available");
+		}
+		catch(Exception e){
+		System.out.println("CONTACT US link is not available");
+		}
+
+
+		////CONTACT FORM PAGE
+
+		try {
+		driver.findElement(By.xpath("//*[@id=\"ac-globaldiv\"]/div/section/div/section[4]/div/a/p")).click();
+		System.out.println("CONTACT US link Click success");
+		}
+		catch(Exception e){
+		System.out.println("CONTACT US link click failed");
+		}
+
+		//page verification
+
+		String actualtitle= driver.getTitle();
+		String expectedtitle="Best Consumer Digital Bank UAE | Personal Banking | Mashreq Bank";
+		if(actualtitle.contains(expectedtitle))
+		System.out.println("Title Matched");
+		else
+		System.out.println("Title didn't match");
+
+
+		Thread.sleep(3000);
+		///SUBMIT BUTTON
+
+		  try {
+
+		driver.findElement(By.xpath("//button[@id='btnSubmit']")).click();	
+		System.out.println("Submit Button click success");
+		}
+		catch(Exception e) {
+		System.out.println("Submit Button click fail");
+		}
+
+		  
+		  WebElement inputElement = driver.findElement(By.name("reachoutforproduct"));
+		  JavascriptExecutor js = (JavascriptExecutor) driver;  
+		  boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;",inputElement);
+		  if(isRequired )
+		 
+		  {
+		 System.out.println("Field should not be empty");
+		     //element is required and validation error will popup if the field is empty.
+		 
+		  
+		  driver.findElement(By.xpath("//*[@id=\"reachoutforproduct\"]")).click();
+		//click
+		  
+		  
+		  }
+		  
+		System.out.println("___Number of options under List I am looking for___");
+		  Select rechout= new Select (driver.findElement(By.xpath("//*[@id=\"reachoutforproduct\"]")));
+		  int size=rechout.getOptions().size();
+		  size--;
+		  if(size==4)
+		 System.out.println("The list contains 4 options excluding the first option I AM Looking for ");
+
+		else
+		System.out.println("The list does not contain 4 options");
+
+		////Product
+		  
+		  
+		  Select product= new Select (driver.findElement(By.xpath("//*[@id=\"product\"]")));
+		  int sizeofproduct=product.getOptions().size();
+		  sizeofproduct--;
+		  if(sizeofproduct==0)
+		 System.out.println("The list does not contains any  options excluding the first option Select sub product ");
+
+		else
+		System.out.println("The list does not contain 6 options");
+		  
+		  System.out.println("After selecting Loan option");
+		  driver.findElement(By.xpath("//*[@id=\"need\"]/option[2]")).click();
+		  
+		int sizeofproduct1=product.getOptions().size();
+		  sizeofproduct1--;
+		  if(sizeofproduct1==6)
+		 System.out.println("The list contains 6 options excluding the first option Select sub product ");
+
+		else
+		System.out.println("The list does not contain 6 options");
+		  
+		  
+		  driver.findElement(By.xpath("//*[@id=\"mobile\"]")).sendKeys("123456");
+		  if(driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[7]/div/div[2]/span")).isDisplayed())
+		 System.out.println("Error msg shown when mobile number less than/greater than 7 digit is enetered");
+		  else
+		 System.out.println("No Error msg shown when mobile number with 7 digit is enetered");
+		  
+		  Thread.sleep(3000);
+		  driver.findElement(By.xpath("//*[@id=\"mobile\"]")).clear();
+		  
+		  driver.findElement(By.xpath("//*[@id=\"mobile\"]")).sendKeys("1234567");
+		  if(!driver.findElement(By.xpath("//*[@id=\"dvMain\"]/div/div/div[7]/div/div[2]/span")).isDisplayed())
+		 System.out.println("No Error msg shown when mobile number with 7 digit is enetered");
+		  else
+		 System.out.println("Error msg shown when mobile number less than/greater than 7 digit is enetered");
+		  
+		  
+		  Thread.sleep(1000);
+		driver.quit();
+		}}
+
+			
+				
